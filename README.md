@@ -1,6 +1,6 @@
 # Hobby♡Life!
 
-##~No,hobby No,Life~
+## [theme]~No,hobby No,Life~
 
 > 概要
 
