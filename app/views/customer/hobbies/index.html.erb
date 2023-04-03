@@ -1,0 +1,11 @@
+<h2>Hobby</h2>
+<%=form_with model: @hobby,url:customer_hobbies_path,method: :post do |f| %>
+ <%= f.text_field :name%>
+ <%= f.submit"登録"%>
+<% end %>
+
+<h3>Hobby一覧</h3>
+<% @hobbies.each do |hobby| %>
+ <%= hobby.name %>
+ <%= link_to "edit",edit_customer_hobby_path(hobby)%>
+<% end %>

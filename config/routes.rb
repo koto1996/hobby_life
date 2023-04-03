@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
   root to: 'homes#top'
+  
+  namespace :customer do
+  resources :hobbies,only: [:create,:index,:edit,:update]
+end
 # 会員用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords],controllers: {
