@@ -18,7 +18,7 @@
         <td><%=f.collection_select :hobby_id,Hobby.all, :id, :name%></td>
       </tr>
         <th></th>
-        <td><%= f.submit "NEWPOST"%></td>
+        <td><%= f.submit "NEWPOST",class:"btn btn-danger"%></td>
     </table>
   <% end %>
 
