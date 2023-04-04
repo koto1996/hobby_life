@@ -17,10 +17,17 @@ class Customer::HobbiesController < ApplicationController
   end
  end
 
- def edit
- end
+  def edit
+   @hobby = Hobby.find(params[:id])
+  end
 
  def update
+   @hobby = Hobby.find(params[:id])
+  if
+   @hobby.customer_id==current_customer.id
+   @hobby.update(hobby_params)
+   redirect_to customer_hobbies_path
+  end
  end
 
  private
