@@ -1,2 +1,15 @@
-<h1>Customer::Posts#show</h1>
-<p>Find me in app/views/customer/posts/show.html.erb</p>
+<h2>Show</h2>
+  <table>
+    <tr>
+      <th>image</th>
+      <td><%= image_tag@post.get_image%></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><%= @post.title%></td>
+    </tr>
+    <tr>
+      <th>body</th>
+      <td><%= @post.body%></td>
+    </tr>
+  </table>

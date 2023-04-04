@@ -15,15 +15,17 @@ class Customer::PostsController < ApplicationController
   end
    
   def index
+    @posts=Post.all
   end
 
   def show
+    @post=Post.find(params[:id])
   end
   
   private
   
   def post_params
-    params.require(:post).permit(:title,:body,:customer_id)
+    params.require(:post).permit(:title,:body,:customer_id,:hobby_id,:image)
   end
   
 end
