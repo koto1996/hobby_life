@@ -8,6 +8,7 @@ end
  scope module: :customer do
    get 'user/mypage' => 'users#show'
    get 'user/mypage/edit' => 'users#edit'
+   patch 'user/mypage' => 'users#update'
  end
   #customer
 # 会員用
