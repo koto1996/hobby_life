@@ -70,3 +70,7 @@
 ・Bootstrap : 4.5
 
 ・kaminari
+
+##使用したサイト
+
+・デザイン<https://bon.design/>

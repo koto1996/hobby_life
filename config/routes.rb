@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-
   root to: 'homes#top'
 
   namespace :customer do
   resources :posts,only: [:new,:create,:index,:show,:edit,:update]
   resources :hobbies,only: [:create,:index,:edit,:update]
 end
+ scope module: :customer do
+   get 'user/mypage' => 'users#show'
+   get 'user/mypage/edit' => 'users#edit'
+ end
   #customer
 # 会員用
 # URL /customers/sign_in ...
