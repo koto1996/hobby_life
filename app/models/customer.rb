@@ -16,9 +16,15 @@ class Customer < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-
-
   validates :name,presence: true, length: {in: 2..10}#2文字から10文字以内であるか
   validates :email,presence: true, uniqueness: true#重複していないか
   validates :birthday,presence: true
+
+  def self.search_for(content,method)
+    if method == 'perfect'
+     Customer.where(name: content)
+    else
+     Customer.where('name LIKE ?','%'+content+'%')
+    end
+  end
 end

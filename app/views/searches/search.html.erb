@@ -1,0 +1,11 @@
+<h2>Search result</h2>
+<% if @model == 'customer'%>
+  <h3><%= @content %></h3>
+    <%= render 'customer/users/index',customers:@records %>
+<% elsif @model == 'post'%>
+  <h3><%= @content %></h3>
+    <%= render 'customer/posts/index',posts:@records %>
+<% else %>
+  <h3><%= @content %></h3>
+    <%= render 'customer/hobbies/hobby',hobbies:@records %>
+<% end %>

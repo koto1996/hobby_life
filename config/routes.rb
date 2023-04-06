@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
-
+  get '/search', to: 'searches#search'
+  
   namespace :customer do
   resources :posts,only: [:new,:create,:index,:show,:edit,:update]
   resources :hobbies,only: [:create,:index,:edit,:update]
@@ -9,6 +10,7 @@ end
    get 'user/mypage' => 'users#show'
    get 'user/mypage/edit' => 'users#edit'
    patch 'user/mypage' => 'users#update'
+   get '/users' => 'users#index'
  end
   #customer
 # 会員用

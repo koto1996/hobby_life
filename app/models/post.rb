@@ -12,4 +12,13 @@ class Post < ApplicationRecord
      end
      image.variant(resize_to_limit: [width, height]).processed
    end
+   
+  def self.search_for(content,method)
+    if method == 'perfect'
+     Post.where(title: content)
+    else
+     Post.where('title LIKE ?','%'+content+'%')
+    end
+  end
+  
 end

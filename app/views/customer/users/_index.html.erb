@@ -1,0 +1,8 @@
+<table>
+    <% customers.each do |customer| %>
+    <tr>
+    <td><%= image_tag customer.profile_image %></td>
+    <td><%= customer.name%></td>
+    </tr>
+    <% end %>
+</table>
