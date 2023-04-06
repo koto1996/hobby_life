@@ -1,5 +1,9 @@
-<h2>Hobby Edit</h2>
-  <%= form_with model:@hobby,url:customer_hobby_path(@hobby) do |f|%>
-    <%= f.text_field :name %>
-    <%= f.submit "update"%>
-  <% end %>
+<div class="container">
+  <div class="row-10 offset-1">
+    <h2>Hobby Edit</h2>
+      <%= form_with model:@hobby,url:customer_hobby_path(@hobby) do |f|%>
+      <%= f.text_field :name %>
+      <%= f.submit "update"%>
+      <% end %>
+  </div>
+</div>
