@@ -10,6 +10,11 @@
       <td><%= link_to "edit",user_mypage_edit_path,class:'btn btn-danger'%></td>
     </tr>
   </table>
+  <h3>Hobby一覧</h3>
+    <% @hobbies.each do |hobby| %>
+    <%= hobby.name %>
+    <%= link_to "edit",edit_customer_hobby_path(hobby)%>
+    <% end %>
   <table>
     <thead>
       <tr>

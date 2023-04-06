@@ -15,7 +15,7 @@
       </tr>
       <tr>
         <th><%= f.label "hobby"%></th>
-        <td><%=f.collection_select :hobby_id,Hobby.all, :id, :name%></td>
+        <td><%=f.collection_select :hobby_id,current_customer.hobbies.all, :id, :name%></td>
       </tr>
         <th></th>
         <td><%= f.submit "NEWPOST",class:"btn btn-danger"%></td>

@@ -2,7 +2,7 @@ class Customer::HobbiesController < ApplicationController
 
  def index
    @hobby = Hobby.new
-   @hobbies = Hobby.all
+   @hobbies = current_customer.hobbies.all
  end
 
 
@@ -33,6 +33,6 @@ class Customer::HobbiesController < ApplicationController
  private
 
  def hobby_params
-   params.require(:hobby).permit(:name)
+   params.require(:hobby).permit(:name,:customer_id)
  end
 end
