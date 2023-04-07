@@ -12,4 +12,8 @@
       <th>body</th>
       <td><%= @post.body%></td>
     </tr>
+    <tr>
+      <th></th>
+      <td><%= render 'customer/favorites/favorite',post: @post %></td>
+    </tr>
   </table>
