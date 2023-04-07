@@ -3,7 +3,7 @@
     <div class="card  mx-auto">
       <h1 class="text-center">UserEdit</h1>
         <table class="mx-auto">
-          <%= form_with model:@customer,url: user_mypage_path do |f| %>
+          <%= form_with model:@customer,url: user_mypage_path,method: :patch do |f| %>
           <tr>
             <th>image</th>
             <td><%= f.file_field :profile_image,accept:"image/*"%></td>

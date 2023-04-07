@@ -2,18 +2,18 @@ Rails.application.routes.draw do
   root to: 'homes#top'
   get '/search', to: 'searches#search'
 
-  namespace :customer do
+ scope module: :customer do
   resources :posts,only: [:new,:create,:index,:show,:edit,:update] do
     resource :favorites,only: [:create,:destroy]
   end
   resources :hobbies,only: [:create,:index,:edit,:update]
-end
- scope module: :customer do
+
    get 'user/mypage' => 'users#show'
    get 'user/mypage/edit' => 'users#edit'
    patch 'user/mypage' => 'users#update'
    get '/users' => 'users#index'
  end
+
   #customer
 # 会員用
 # URL /customers/sign_in ...

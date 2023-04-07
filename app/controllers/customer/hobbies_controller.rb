@@ -11,7 +11,7 @@ class Customer::HobbiesController < ApplicationController
    @hobby.customer_id=current_customer.id
   if
    @hobby.save
-   redirect_to customer_hobbies_path
+   redirect_to hobbies_path
   else
    render request.referer
   end
@@ -26,7 +26,7 @@ class Customer::HobbiesController < ApplicationController
   if
    @hobby.customer_id==current_customer.id
    @hobby.update(hobby_params)
-   redirect_to customer_hobbies_path
+   redirect_to hobbies_path
   end
  end
 

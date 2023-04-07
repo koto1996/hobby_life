@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row-10 offset-1">
     <h2>NewPost</h2>
-      <%= form_with model:@post,url: customer_posts_path,method: :post do |f| %>
+      <%= form_with model:@post,url: posts_path,method: :post do |f| %>
         <table>
           <tr>
             <th><%= f.label "image"%></th>

@@ -4,7 +4,7 @@
     <% hobbies.each do |hobby| %>
     <tr>
     <td><%= hobby.name %></td>
-    <td><%= link_to "edit",edit_customer_hobby_path(hobby),class:'btn btn-danger btn-sm'%></td>
+    <td><%= link_to "edit",edit_hobby_path(hobby),class:'btn btn-danger btn-sm'%></td>
     </tr>
     <% end %>
   </table>

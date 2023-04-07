@@ -8,7 +8,7 @@ class Customer::PostsController < ApplicationController
     @post.customer_id=current_customer.id
    if
     @post.save
-    redirect_to customer_posts_path
+    redirect_to posts_path
    else
     render request.referer
    end

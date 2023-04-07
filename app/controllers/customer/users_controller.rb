@@ -4,7 +4,7 @@ class Customer::UsersController < ApplicationController
    @posts = current_customer.posts.order(created_at: :desc)
    @hobbies = current_customer.hobbies
   end
- 
+
   def index
    @customers = Customer.all
   end
