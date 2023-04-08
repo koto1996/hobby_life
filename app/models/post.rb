@@ -3,11 +3,11 @@ class Post < ApplicationRecord
   belongs_to :customer
   belongs_to :hobby
   has_many :favorites,dependent: :destroy
-  
+
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
- 
+
   has_one_attached :image
 
   def get_image(width,height)
@@ -17,7 +17,7 @@ class Post < ApplicationRecord
     end
       image.variant(resize_to_limit: [width, height]).processed
   end
-   
+
   def self.search_for(content,method)
     if method == 'perfect'
      Post.where(title: content)
@@ -25,5 +25,5 @@ class Post < ApplicationRecord
      Post.where('title LIKE ?','%'+content+'%')
     end
   end
-  
+
 end
