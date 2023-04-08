@@ -3,12 +3,17 @@ class Customer::UsersController < ApplicationController
    @customer = current_customer
    @posts = current_customer.posts.order(created_at: :desc)
    @hobbies = current_customer.hobbies
-   @favorite_posts = @customer.favorite_posts
   end
 
   def index
    @customers = Customer.all
   end
+
+  def like
+   @customer = current_customer
+   @favorite_posts = @customer.favorite_posts
+  end
+
 
   def edit
    @customer = current_customer

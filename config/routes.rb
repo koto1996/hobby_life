@@ -12,6 +12,7 @@ Rails.application.routes.draw do
    get 'user/mypage/edit' => 'users#edit'
    patch 'user/mypage' => 'users#update'
    get '/users' => 'users#index'
+   get 'user/likes' => 'users#like'
  end
 
   #customer

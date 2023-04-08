@@ -6,8 +6,9 @@ class Customer < ApplicationRecord
   has_many :hobbies,dependent: :destroy
   has_many :posts,dependent: :destroy
   has_many :favorites,dependent: :destroy
-  # いいねの一覧実装のため中間モデル作成/user-
+  # いいねの一覧実装のため中間モデル作成/users#like 参照：https://qiita.com/kurawo___D/items/d8115ecae71164a70f18
   has_many :favorite_posts,through: :favorites,source: :post
+  
   has_one_attached :profile_image
 
   def get_profile_image(width,height)
