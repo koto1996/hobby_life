@@ -5,6 +5,7 @@ Rails.application.routes.draw do
  scope module: :customer do
   resources :posts,only: [:new,:create,:index,:show,:edit,:update] do
     resource :favorites,only: [:create,:destroy]
+   resources :post_comments,only: [:create,:destroy]
   end
   resources :hobbies,only: [:create,:index,:edit,:update]
 

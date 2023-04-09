@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :customer
   belongs_to :hobby
   has_many :favorites,dependent: :destroy
-
+  has_many :post_comments,dependent: :destroy
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end

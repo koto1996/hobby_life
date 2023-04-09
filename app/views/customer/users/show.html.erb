@@ -32,6 +32,7 @@
             <td><%=image_tag pos.get_image(100,100)%></td>
             <td><%=pos.title%></td>
             <td><%=link_to "show",post_path(pos)%></td>
+            <td><%=pos.post_comments.count%>コメント</td>
           </tr>
           <% end %>
         </tbody>

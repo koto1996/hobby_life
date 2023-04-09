@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   # いいねの一覧実装のため中間モデル作成/users#like 参照：https://qiita.com/kurawo___D/items/d8115ecae71164a70f18
   has_many :favorite_posts,through: :favorites,source: :post
   
+  has_many :post_comments,dependent: :destroy
   has_one_attached :profile_image
 
   def get_profile_image(width,height)
