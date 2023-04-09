@@ -1,0 +1,2 @@
+module Customer::RelationshipHelper
+end

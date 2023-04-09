@@ -9,13 +9,15 @@ Rails.application.routes.draw do
   end
   resources :hobbies,only: [:create,:index,:edit,:update]
 
-   get 'user/mypage' => 'users#show'
-   get 'user/mypage/edit' => 'users#edit'
-   patch 'user/mypage' => 'users#update'
-   get '/users' => 'users#index'
-   get 'user/likes' => 'users#like'
- end
+   
 
+   resources :users,only: [:index,:show,:edit,:update,] do
+    resource :relationships,only: [:create,:destroy]
+     get 'followings' => 'relationships#followings', as: 'followings'
+     get 'followers' => 'relationships#followers',as: 'followers'
+    end
+ end
+  get 'user/likes' => 'users#like'
   #customer
 # 会員用
 # URL /customers/sign_in ...

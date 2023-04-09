@@ -1,0 +1,5 @@
+<% if @users.exists? %>
+  <%= render '/users/index',customers:@users %>
+<% else %>
+ <p>ユーザーはいません</p>
+<% end %>

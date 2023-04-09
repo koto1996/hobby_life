@@ -1,7 +1,7 @@
 class Customer::UsersController < ApplicationController
   def show
-   @customer = current_customer
-   @posts = current_customer.posts.order(created_at: :desc)
+   @customer = Customer.find(params[:id])
+   @posts = @customer.posts.order(created_at: :desc)
    @hobbies = current_customer.hobbies
   end
 
