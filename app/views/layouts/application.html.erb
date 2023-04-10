@@ -17,9 +17,11 @@
     <div class="ml-5">
       <%=link_to "Post",posts_path %>
     </div>
+    <% if customer_signed_in? %>
     <div class="ml-5">
-      <%=link_to "Mypage",user_path(current_customer.id) %>
+      <%=link_to "Mypage",user_path(id: current_customer.id) %>
     </div>
+    <% end %>
     <%= render 'searches/form' %>
     <%= yield %>
   </body>

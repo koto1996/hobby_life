@@ -3,21 +3,19 @@ Rails.application.routes.draw do
   get '/search', to: 'searches#search'
 
  scope module: :customer do
-  resources :posts,only: [:new,:create,:index,:show,:edit,:update] do
-    resource :favorites,only: [:create,:destroy]
-   resources :post_comments,only: [:create,:destroy]
+    resources :posts,only: [:new,:create,:index,:show,:edit,:update] do
+     resource :favorites,only: [:create,:destroy]
+    resources :post_comments,only: [:create,:destroy]
   end
-  resources :hobbies,only: [:create,:index,:edit,:update]
-
-   
-
-   resources :users,only: [:index,:show,:edit,:update,] do
-    resource :relationships,only: [:create,:destroy]
+    resources :hobbies,only: [:create,:index,:edit,:update]
+    resources :users, only: [:index,:show,:edit,:update,] do
+     resource :relationships, only: [:create,:destroy]
      get 'followings' => 'relationships#followings', as: 'followings'
      get 'followers' => 'relationships#followers',as: 'followers'
     end
+     get 'user/likes' => 'users#like'
  end
-  get 'user/likes' => 'users#like'
+
   #customer
 # 会員用
 # URL /customers/sign_in ...

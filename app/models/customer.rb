@@ -8,15 +8,16 @@ class Customer < ApplicationRecord
   has_many :favorites,dependent: :destroy
   # いいねの一覧実装のため中間モデル作成/users#like 参照：https://qiita.com/kurawo___D/items/d8115ecae71164a70f18
   has_many :favorite_posts,through: :favorites,source: :post
-  
+
   has_many :post_comments,dependent: :destroy
-  
+
   # フォローする側
-  has_many :followings,through: :relationships,source: :followed
-  has_many :relationships,class_name:"Relationship",foreign_key:"follower_id",dependent: :destroy
+  has_many :relationships,foreign_key: :following_id,dependent: :destroy
+  has_many :followings,through: :relationships,source: :follower
   # フォローされる側
-  has_many :followers,through: :reverse_relationships,source: :follower
-  has_many :reverse_relationships,class_name:"Relationship",foreign_key:"followed_id",dependent: :destroy
+  has_many :reverse_relationships,class_name: "Relationship",foreign_key: :follower_id,dependent: :destroy
+  has_many :followers,through: :reverse_relationships,source: :following
+
   has_one_attached :profile_image
 
   def get_profile_image(width,height)
@@ -30,20 +31,20 @@ class Customer < ApplicationRecord
   validates :name,presence: true, length: {in: 2..10}#2文字から10文字以内であるか
   validates :email,presence: true, uniqueness: true#重複していないか
   validates :birthday,presence: true
- 
+
   # relationshipコントローラにて使用
-  def follow(customer)
-    relationships.create(followed_id: customer.id)
+  def follow(user)
+    relationships.create(following_id: user.id)
   end
-  
-  def unfollow(customer)
-    relationships.find_by(followed_id: customer.id).destroy
+
+  def unfollow(user)
+    relationships.find_by(following_id: user.id).destroy
   end
-  
-  def following?(customer)
-    followings.include?(customer)
+
+  def following?(user)
+    followings.include?(user)
   end
-  
+
   def self.search_for(content,method)
     if method == 'perfect'
      Customer.where(name: content)
