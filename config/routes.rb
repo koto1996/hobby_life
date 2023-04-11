@@ -9,10 +9,12 @@ Rails.application.routes.draw do
   end
     resources :hobbies,only: [:create,:index,:edit,:update]
     resources :users, only: [:index,:show,:edit,:update,] do
+     #フォローフォロワー機能
      resource :relationships, only: [:create,:destroy]
      get 'followings' => 'relationships#followings', as: 'followings'
      get 'followers' => 'relationships#followers',as: 'followers'
     end
+     #いいね一覧
      get 'user/likes' => 'users#like'
  end
 

@@ -12,7 +12,7 @@ class Customer < ApplicationRecord
   has_many :post_comments,dependent: :destroy
 
   # フォローする側
-  has_many :relationships,foreign_key: :following_id,dependent: :destroy
+  has_many :relationships,foreign_key: "following_id",dependent: :destroy
   has_many :followings,through: :relationships,source: :follower
   # フォローされる側
   has_many :reverse_relationships,class_name: "Relationship",foreign_key: :follower_id,dependent: :destroy
@@ -34,11 +34,11 @@ class Customer < ApplicationRecord
 
   # relationshipコントローラにて使用
   def follow(user)
-    relationships.create(following_id: user.id)
+    relationships.create(follower_id: user.id)
   end
 
   def unfollow(user)
-    relationships.find_by(following_id: user.id).destroy
+    relationships.find_by(follower_id: user.id).destroy
   end
 
   def following?(user)

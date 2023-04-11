@@ -15,12 +15,12 @@ class Customer::RelationshipsController < ApplicationController
 
   def followings
     user = Customer.find(params[:user_id])
-    @customers = user.followings
+    @users = user.followings
   end
 
   def followers
-    user= Customer.find(params[:user_id])
-    @customers = user.followers
+    user = Customer.find(params[:user_id])
+    @users = user.followers
   end
 
 end
