@@ -2,5 +2,6 @@
   <h2>Posts</h2>
   <div><%=link_to "NewPost",new_post_path,class:'btn btn-danger'%></div>
   <div><%=link_to "Hobby",hobbies_path,class:'btn btn-danger' %></div>
+  <div><%=link_to "NewGroup",new_group_path,class:'btn btn-danger' %></div>
   <%= render 'index',posts:@posts %>
 </div>

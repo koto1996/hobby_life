@@ -1,8 +1,35 @@
 <h1>Group</h1>
-
-<%= @group.name %>
-
-<%= image_tag @group.get_image,size:'100x100' %>
-
-<%= @group.introduction %>
-
+    <table>
+        <thead>
+            <tr>
+                <th>image</th>
+                <th>name</th>
+                <th>introduction</th>
+                <th>member</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><%= image_tag @group.get_image,size:'100x100' %></td>
+                <td><%= @group.name %></td>
+                <td><%= @group.introduction %></td>
+                <td>
+                    <% @group.customers.each do |customer| %>
+                        <%= link_to user_path(customer) do %>
+                            <li style="list-style: none;"><%= customer.name %></li>
+                        <% end %>
+                    <% end %>
+                </td>
+                <td>
+                    <%if @group.is_owned_by?(current_customer) %>
+                        <%= link_to 'Edit',edit_group_path(@group) %>
+                        <%= link_to 'Delete',group_path(@group),method: :delete,'data-confirm'=>"本当に削除しますか？" %>
+                    <% elsif @group.includesCustomer?(current_customer) %>
+                        <%= link_to 'Withdraw',group_group_users_path(@group),method: :delete,class:'btn btn-danger' %>
+                    <% else %>
+                        <%= link_to 'Join',group_group_users_path(@group),method: :post,class:'btn btn-danger' %>
+                    <% end %>
+                </td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,4 +1,5 @@
 class Customer::GroupsController < ApplicationController
+  before_action :authenticate_customer!
   def new
     @group = Group.new
   end
@@ -34,6 +35,12 @@ class Customer::GroupsController < ApplicationController
     end
   end
 
+  def destroy
+    @group = Group.find(params[:id])
+    if @group.destroy
+      redirect_to groups_path, notice:'グループを削除しました'
+    end
+  end
   private
   def group_params
     params.require(:group).permit(:name,:introduction, :image)

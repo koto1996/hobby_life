@@ -21,7 +21,9 @@ Rails.application.routes.draw do
      get 'followers' => 'relationships#followers',as: 'followers'
     end
     # グループ機能
-    resources :groups,only: [:new,:create,:index,:show,:edit,:update]
+    resources :groups,only: [:new,:create,:index,:show,:edit,:update,:destroy] do
+     resource :group_users,only: [:create,:destroy]
+    end
      #いいね一覧
      get 'user/likes' => 'users#like'
  end

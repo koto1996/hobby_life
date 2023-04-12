@@ -21,6 +21,9 @@
     <div class="ml-5">
       <%=link_to "Mypage",user_path(id: current_customer.id) %>
     </div>
+    <div class="ml-5">
+      <%=link_to "Group",groups_path %>
+    </div>
     <% end %>
     <%= render 'searches/form' %>
     <%= yield %>
