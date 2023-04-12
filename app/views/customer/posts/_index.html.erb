@@ -22,6 +22,9 @@
         <%=pos.title%>
         <% end %>
       </td>
+      <td id="favorite_buttons_<%= pos.id%>">
+        <%= render "customer/favorites/favorite",post: pos %>
+      </td>
     </tr>
     <% end %>
   </tbody>

@@ -8,8 +8,10 @@ class Customer < ApplicationRecord
   has_many :favorites,dependent: :destroy
   # いいねの一覧実装のため中間モデル作成/users#like 参照：https://qiita.com/kurawo___D/items/d8115ecae71164a70f18
   has_many :favorite_posts,through: :favorites,source: :post
-
+  # コメント機能
   has_many :post_comments,dependent: :destroy
+  # グループ機能
+  has_many :group_users,dependent: :destroy
 
   # フォローする側
   has_many :relationships,foreign_key: "following_id",dependent: :destroy

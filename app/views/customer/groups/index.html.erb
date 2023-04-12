@@ -1,0 +1,20 @@
+<h1>作成したGroups</h1>
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>group-name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |group| %>
+    <tr>
+      <td><%=image_tag group.get_image,size:'100x100' %></td>
+      <td><%= link_to group_path(group.id) do %>
+          <%= group.name %>
+          <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
