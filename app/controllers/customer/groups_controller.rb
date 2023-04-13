@@ -41,6 +41,7 @@ class Customer::GroupsController < ApplicationController
       redirect_to groups_path, notice:'グループを削除しました'
     end
   end
+
   private
   def group_params
     params.require(:group).permit(:name,:introduction, :image)

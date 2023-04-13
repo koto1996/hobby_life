@@ -9,7 +9,7 @@ class Customer::RelationshipsController < ApplicationController
 
   def destroy
     user = Customer.find(params[:user_id])
-    current_customer.unfollow(user)　
+    current_customer.unfollow(user)
     redirect_to request.referer
   end
 

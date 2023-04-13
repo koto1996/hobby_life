@@ -1,8 +1,12 @@
 <table>
     <% customers.each do |customer| %>
     <tr>
-    <td><%= image_tag customer.profile_image %></td>
-    <td><%= customer.name%></td>
+        <td><%= image_tag customer.get_profile_image(100,100) %></td>
+        <td><%= link_to user_path(customer) do %>
+            <%= customer.name%>
+            <% end %>
+        </td>
+        <td><%= render 'customer/relationships/follobtn',customer: customer %></td>
     </tr>
     <% end %>
 </table>

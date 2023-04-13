@@ -1,0 +1,22 @@
+<h1><%= @group.name %>のchats</h1>
+  <% @customers.each do |customer| %>
+    <%= customer.name %>
+  <% end %>
+
+    <div class="message">
+      <% @chats.each do |chat| %>
+        <%if chat.customer_id == current_customer.id %>
+          <div style="text-align:right;"><%=chat.message%></div>
+        <% else %>
+          <div style="text-align:left;"><%=chat.message%></div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div><%=flash[:notice]%></div>
+    <%= form_with model:@chat,url: group_chats_path,method: :post do |f| %>
+      <%= f.text_field :message %>
+      <%= f.hidden_field :group_id %>
+      <%= f.hidden_field :customer_id %>
+      <%= f.submit "Send" %>
+    <% end %>

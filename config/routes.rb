@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  namespace :customer do
-    get 'groups/new'
-    get 'groups/index'
-    get 'groups/show'
-    get 'groups/edit'
-  end
   root to: 'homes#top'
   get '/search', to: 'searches#search'
 
@@ -23,6 +17,7 @@ Rails.application.routes.draw do
     # グループ機能
     resources :groups,only: [:new,:create,:index,:show,:edit,:update,:destroy] do
      resource :group_users,only: [:create,:destroy]
+      resources :chats, only: [:index,:create,:destroy]
     end
      #いいね一覧
      get 'user/likes' => 'users#like'
