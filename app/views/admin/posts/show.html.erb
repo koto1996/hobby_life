@@ -1,0 +1,20 @@
+<h2>admin-Show-</h2>
+  <table>
+    <tr>
+      <th>image</th>
+      <td><%= image_tag@post.get_image(100,100)%></td>
+    </tr>
+    <tr>
+      <th>title</th>
+      <td><%= @post.title%></td>
+    </tr>
+    <tr>
+      <th>body</th>
+      <td><%= @post.body%></td>
+    </tr>
+  </table>
+  <div>
+    <p>コメント数:<%= @post.post_comments.count %></p>
+    <% @post.post_comments.each do |comment| %>
+      <p><%= comment.comment %></p>
+    <% end %>

@@ -22,7 +22,9 @@ Rails.application.routes.draw do
      #いいね一覧
      get 'user/likes' => 'users#like'
  end
-
+ namespace :admin do
+    resources :posts,only:[:index,:show,:destroy]
+ end
   #customer
 # 会員用
 # URL /customers/sign_in ...
