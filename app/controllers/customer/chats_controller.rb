@@ -1,9 +1,9 @@
 class Customer::ChatsController < ApplicationController
   def index
-    @group=Group.find(params[:group_id])
+    @group = Group.find(params[:group_id])
     @customers = @group.customers
     @chat = Chat.new
-    @chat.group=@group
+    @chat.group = @group
     @chats = @group.chats
   end
 

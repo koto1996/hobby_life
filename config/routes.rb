@@ -23,7 +23,9 @@ Rails.application.routes.draw do
      get 'user/likes' => 'users#like'
  end
  namespace :admin do
-    resources :posts,only:[:index,:show,:destroy]
+    resources :posts,only:[:index,:show,:destroy] do
+     resources :post_comments,only:[:destroy]
+    end
  end
   #customer
 # 会員用

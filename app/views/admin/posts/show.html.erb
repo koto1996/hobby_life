@@ -12,9 +12,14 @@
       <th>body</th>
       <td><%= @post.body%></td>
     </tr>
+    <tr>
+      <th></th>
+      <td><%= link_to "Destroy",admin_post_path(@post),method: :delete %></td>
+    </tr>
   </table>
   <div>
     <p>コメント数:<%= @post.post_comments.count %></p>
     <% @post.post_comments.each do |comment| %>
       <p><%= comment.comment %></p>
+      <P><%= link_to "Destroy",admin_post_post_comment_path(@post,comment),method: :delete %></p>
     <% end %>

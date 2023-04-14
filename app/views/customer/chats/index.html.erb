@@ -8,7 +8,9 @@
         <%if chat.customer_id == current_customer.id %>
           <div style="text-align:right;"><%=chat.message%></div>
         <% else %>
-          <div style="text-align:left;"><%=chat.message%></div>
+          <div style="text-align:left;">
+            <%=chat.message%>
+          </div>
         <% end %>
       <% end %>
     </div>
