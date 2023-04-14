@@ -16,9 +16,6 @@ class Customer::ChatsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
   private
 
   def chat_params

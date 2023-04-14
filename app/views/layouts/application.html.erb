@@ -26,6 +26,9 @@
     </div>
     <% end %>
     <%= render 'searches/form' %>
+    <div>
+      <%= flash[:notice] %>
+    </div>
     <%= yield %>
   </body>
 </html>

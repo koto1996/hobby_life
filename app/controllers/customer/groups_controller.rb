@@ -8,7 +8,7 @@ class Customer::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_customer.id
     if @group.save
-     redirect_to groups_path
+     redirect_to groups_path,notice:'グループを作成しました。'
     else
      render :new
     end
@@ -29,7 +29,7 @@ class Customer::GroupsController < ApplicationController
   def update
     @group=Group.find(params[:id])
     if @group.update(group_params)
-     redirect_to groups_path
+     redirect_to groups_path,notice:'グループを編集しました'
     else
      render :edit
     end

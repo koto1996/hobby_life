@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/search', to: 'searches#search'
 
  scope module: :customer do
-    resources :posts,only: [:new,:create,:index,:show,:edit,:update] do
+    resources :posts,only: [:new,:create,:index,:show,:edit,:update,:destroy] do
      resource :favorites,only: [:create,:destroy]
     resources :post_comments,only: [:create,:destroy]
   end
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     # グループ機能
     resources :groups,only: [:new,:create,:index,:show,:edit,:update,:destroy] do
      resource :group_users,only: [:create,:destroy]
-      resources :chats, only: [:index,:create,:destroy]
+      resources :chats, only: [:index,:create]
     end
      #いいね一覧
      get 'user/likes' => 'users#like'
