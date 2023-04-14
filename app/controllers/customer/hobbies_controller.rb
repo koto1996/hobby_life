@@ -11,9 +11,9 @@ class Customer::HobbiesController < ApplicationController
    @hobby.customer_id=current_customer.id
   if
    @hobby.save
-   redirect_to hobbies_path
+   redirect_to hobbies_path,notice:"hobbyを作成しました。"
   else
-   render request.referer
+   redirect_to request.referer,notice:"hobbyの作成に失敗しました"
   end
  end
 
@@ -26,7 +26,7 @@ class Customer::HobbiesController < ApplicationController
   if
    @hobby.customer_id==current_customer.id
    @hobby.update(hobby_params)
-   redirect_to hobbies_path
+   redirect_to hobbies_path,notice:"hobbyを更新しました。"
   end
  end
 
