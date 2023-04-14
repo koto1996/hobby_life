@@ -22,7 +22,7 @@ class Customer::UsersController < ApplicationController
   def update
    @customer = current_customer
    if @customer.update(customer_params)
-    redirect_to user_mypage_path
+    redirect_to user_path(@customer)
    else
     render :edit
    end

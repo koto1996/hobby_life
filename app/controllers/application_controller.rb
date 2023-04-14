@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
     if resource.is_a?(Admin)
       admin_posts_path
     else
-      posts_path
+      user_path(resource)
     end
   end
   # ログアウト後のリダイレクト先
