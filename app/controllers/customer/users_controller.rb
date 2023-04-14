@@ -1,4 +1,6 @@
 class Customer::UsersController < ApplicationController
+  before_action :authenticate_customer!
+  before_action :is_matching_login_customer,only:[:edit,:update]
   def show
    @customer = Customer.find(params[:id])
    @posts = @customer.posts.order(created_at: :desc)
@@ -16,11 +18,13 @@ class Customer::UsersController < ApplicationController
 
 
   def edit
-   @customer = current_customer
+   is_matching_login_customer
+   @customer = Customer.find(params[:id])
   end
 
   def update
-   @customer = current_customer
+   is_matching_login_customer
+   @customer = Customer.find(params[:id])
    if @customer.update(customer_params)
     redirect_to user_path(@customer)
    else
@@ -31,5 +35,12 @@ class Customer::UsersController < ApplicationController
   private
   def customer_params
    params.require(:customer).permit(:name,:profile_image)
+  end
+
+  def is_matching_login_customer
+   customer = Customer.find(params[:id])
+   unless customer.id == current_customer.id
+    redirect_to user_path(customer)
+   end
   end
 end

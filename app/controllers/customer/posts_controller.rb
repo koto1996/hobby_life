@@ -1,4 +1,5 @@
 class Customer::PostsController < ApplicationController
+  before_action :authenticate_customer!,except:[:index]
   def new
     @post = Post.new
   end

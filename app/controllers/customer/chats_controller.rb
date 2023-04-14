@@ -1,4 +1,5 @@
 class Customer::ChatsController < ApplicationController
+  before_action :authenticate_customer!
   def index
     @group = Group.find(params[:group_id])
     @customers = @group.customers

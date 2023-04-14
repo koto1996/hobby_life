@@ -22,9 +22,11 @@
         <%=pos.title%>
         <% end %>
       </td>
+      <% if customer_signed_in?%>
       <td id="favorite_buttons_<%= pos.id%>">
         <%= render "customer/favorites/favorite",post: pos %>
       </td>
+      <% end %>
     </tr>
     <% end %>
   </tbody>

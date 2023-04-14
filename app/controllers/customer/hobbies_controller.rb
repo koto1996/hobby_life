@@ -1,8 +1,8 @@
 class Customer::HobbiesController < ApplicationController
-
+ before_action :authenticate_customer!
  def index
    @hobby = Hobby.new
-   @hobbies = current_customer.hobbies.all
+   @hobbies = current_customer.hobbies
  end
 
 
@@ -35,4 +35,5 @@ class Customer::HobbiesController < ApplicationController
  def hobby_params
    params.require(:hobby).permit(:name,:customer_id)
  end
+
 end

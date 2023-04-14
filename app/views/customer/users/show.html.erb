@@ -15,12 +15,14 @@
           <tr>
             <td><%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
           </tr>
+          <% if @customer == current_customer %>
           <tr>
             <td><%= link_to "edit",edit_user_path,class:'btn btn-danger'%></td>
           </tr>
           <tr>
             <td><%= link_to 'Like',user_likes_path,class:'btn btn-danger'%></td>
           </tr>
+          <% end %>
           <tr>
             <td><%= render 'customer/relationships/follobtn',customer:@customer %></td>
           </tr>
@@ -43,7 +45,9 @@
             <td><%=image_tag pos.get_image(100,100)%></td>
             <td><%=pos.title%></td>
             <td><%=link_to "show",post_path(pos)%></td>
+            <% if pos.customer_id == current_customer %>
             <td><%=link_to "destroy",post_path(pos),method: :delete%></td>
+            <% end %>
             <td><%=pos.post_comments.count%>コメント</td>
             <td id="favorite_buttons_<%= pos.id%>">
               <%= render "customer/favorites/favorite",post: pos %>
