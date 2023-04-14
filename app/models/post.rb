@@ -4,11 +4,11 @@ class Post < ApplicationRecord
   belongs_to :hobby
   has_many :favorites,dependent: :destroy
   has_many :post_comments,dependent: :destroy
-  
+
   validates :title,presence: true
   validates :body,presence: true
   validates :hobby_id,presence: true
-  
+
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end

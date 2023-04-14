@@ -8,9 +8,9 @@ class Customer::PostsController < ApplicationController
     @post.customer_id=current_customer.id
    if
     @post.save
-    redirect_to posts_path,notice:'投稿に成功しました。'
+    redirect_to posts_path,notice:"投稿に成功しました。"
    else
-    render request.referer,notice:'投稿に失敗しました。'
+    redirect_to request.referer,notice:"投稿に失敗しました"
    end
   end
 

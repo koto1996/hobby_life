@@ -4,16 +4,16 @@
       <h1>User</h1>
         <table>
           <tr>
-          <td><%= image_tag @customer.get_profile_image(100,100)%></td>
+            <td><%= image_tag @customer.get_profile_image(100,100)%></td>
           </tr>
           <tr>
-          <td><%= @customer.name %></td>
+            <td><%= @customer.name %></td>
           </tr>
           <tr>
-          <td><%= link_to @customer.followings.count,user_followings_path(@customer)%></td>
+            <td><%= link_to @customer.followings.count,user_followings_path(@customer)%></td>
           </tr>
-           <tr>
-          <td><%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
+          <tr>
+            <td><%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
           </tr>
           <tr>
             <td><%= link_to "edit",edit_user_path,class:'btn btn-danger'%></td>
@@ -25,10 +25,9 @@
             <td><%= render 'customer/relationships/follobtn',customer:@customer %></td>
           </tr>
         </table>
-
-          <h2>Hobby一覧</h2>
-          <%= render 'customer/hobbies/hobby',hobbies: @hobbies %>
-    </div>
+      <h2>Hobby一覧</h2>
+        <%= render 'customer/hobbies/hobby',hobbies: @hobbies %>
+      </div>
     <div class="col-7 mx-auto">
       <table>
         <thead>

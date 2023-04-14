@@ -1,19 +1,19 @@
 <h2>MyFavorites</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>image</th>
-        <th>title</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @favorite_posts.each do |f_pos| %>
-      <tr>
-        <td><%=image_tag f_pos.get_image(100,100)%></td>
-        <td><%=f_pos.title%></td>
-        <td><%=link_to "show",post_path(f_pos)%></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<table>
+  <thead>
+    <tr>
+      <th>image</th>
+      <th>title</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @favorite_posts.each do |f_pos| %>
+    <tr>
+      <td><%=image_tag f_pos.get_image(100,100)%></td>
+      <td><%=f_pos.title%></td>
+      <td><%=link_to "show",post_path(f_pos)%></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
