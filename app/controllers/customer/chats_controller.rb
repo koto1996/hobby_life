@@ -4,6 +4,7 @@ class Customer::ChatsController < ApplicationController
     @group = Group.find(params[:group_id])
     @customers = @group.customers
     @chat = Chat.new
+    @chat.customer_id = current_customer.id
     @chat.group = @group
     @chats = @group.chats
   end

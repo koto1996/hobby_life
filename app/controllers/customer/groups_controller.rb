@@ -1,5 +1,6 @@
 class Customer::GroupsController < ApplicationController
   before_action :authenticate_customer!
+  before_action :is_matching_login_customer,only:[:edit,:update]
   def new
     @group = Group.new
   end
@@ -23,10 +24,12 @@ class Customer::GroupsController < ApplicationController
   end
 
   def edit
+    is_matching_login_customer
     @group = Group.find(params[:id])
   end
 
   def update
+    is_matching_login_customer
     @group=Group.find(params[:id])
     if @group.update(group_params)
      redirect_to groups_path,notice:'グループを編集しました'
@@ -45,5 +48,12 @@ class Customer::GroupsController < ApplicationController
   private
   def group_params
     params.require(:group).permit(:name,:introduction, :image)
+  end
+
+  def is_matching_login_customer
+    group_id = Group.find(params[:id])
+    unless group_id.owner.id == current_customer.id
+      redirect_to groups_path
+  end
   end
 end

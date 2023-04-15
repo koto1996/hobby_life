@@ -13,7 +13,7 @@ class Customer < ApplicationRecord
   has_many :post_comments,dependent: :destroy
   # グループ機能
   has_many :group_users,dependent: :destroy
-  has_many :groups,through: :group_users,dependent: :destroy
+  has_many :groups,through: :group_users,source: :customer,dependent: :destroy
   # グループチャット機能
   has_many :chats,dependent: :destroy
   # フォローする側
