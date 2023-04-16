@@ -1,0 +1,25 @@
+<div style="background-color:#e65c17">
+  <% if admin_signed_in? %>
+  <div class="ml-5">
+    <%=link_to "Post",admin_posts_path,class:"glyphicon glyphicon-camera"%>
+  </div>
+  <div class="ml-5">
+    <%=link_to "Commnet",admin_post_post_comment,class:"glyphicon glyphicon-comment"%>
+  </div>
+<% elsif customer_signed_in? %>
+  <div class="ml-5">
+    <%=link_to "Log out",destroy_customer_session_path,method: :delete%>
+  </div>
+  <div class="ml-5">
+    <%=link_to "Mypage",user_path(id: current_customer.id) %>
+  </div>
+  <div class="ml-5">
+    <%=link_to "Group",groups_path %>
+  </div>
+ <% else %>
+   <div class="ml-5">
+      <%=link_to "Post",posts_path %>
+    </div>
+ <% end %>
+ <%= render 'searches/form' %>
+</div>

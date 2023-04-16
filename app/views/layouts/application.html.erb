@@ -12,25 +12,11 @@
 
   <body>
     <header>
-    <div class="ml-5">
-      <%=link_to "Log out",destroy_customer_session_path,method: :delete %>
-    </div>
-    <div class="ml-5">
-      <%=link_to "Post",posts_path %>
-    </div>
-    <% if customer_signed_in? %>
-    <div class="ml-5">
-      <%=link_to "Mypage",user_path(id: current_customer.id) %>
-    </div>
-    <div class="ml-5">
-      <%=link_to "Group",groups_path %>
-    </div>
-    <% end %>
-    <%= render 'searches/form' %>
+      <%= render "layouts/header" %>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
     </header>
     <main>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
     <%= yield %>
     </main>
   </body>
