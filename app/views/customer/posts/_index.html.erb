@@ -1,33 +1,35 @@
-<table>
-  <thead>
-    <tr>
-      <th>image</th>
-      <th>user</th>
-      <th>title</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% posts.each do |pos| %>
-    <tr>
-      <td>
-        <%=image_tag pos.get_image(100,100) %>
-      </td>
-      <td>
-        <%=link_to user_path(pos.customer_id) do %>
-        <%= pos.customer.name %>
+<div class="row">
+  <table>
+    <thead class="m-4">
+      <tr>
+        <th>image</th>
+        <th>user</th>
+        <th>title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% posts.each do |pos| %>
+      <tr>
+        <td>
+          <%=image_tag pos.get_image(100,100) %>
+        </td>
+        <td>
+          <%=link_to user_path(pos.customer_id) do %>
+          <%= pos.customer.name %>
+          <% end %>
+        </td>
+        <td>
+          <%=link_to post_path(pos.id) do %>
+          <%=pos.title%>
+          <% end %>
+        </td>
+        <% if customer_signed_in?%>
+        <td id="favorite_buttons_<%= pos.id%>">
+          <%= render "customer/favorites/favorite",post: pos %>
+        </td>
         <% end %>
-      </td>
-      <td>
-        <%=link_to post_path(pos.id) do %>
-        <%=pos.title%>
-        <% end %>
-      </td>
-      <% if customer_signed_in?%>
-      <td id="favorite_buttons_<%= pos.id%>">
-        <%= render "customer/favorites/favorite",post: pos %>
-      </td>
+      </tr>
       <% end %>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

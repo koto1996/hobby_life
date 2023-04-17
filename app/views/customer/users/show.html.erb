@@ -31,6 +31,7 @@
         <%= render 'customer/hobbies/hobby',hobbies: @hobbies %>
       </div>
     <div class="col-7 mx-auto">
+      <div><%=link_to "New Post",new_post_path,class:'m-3'%>|<%=link_to "New Hobby",hobbies_path,class:'m-3'%>|<%=link_to "New Group",new_group_path,class:'m-3'%></div>
       <table>
         <thead>
           <tr>

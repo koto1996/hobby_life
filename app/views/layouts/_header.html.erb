@@ -8,42 +8,42 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
         <% if admin_signed_in? %>
           <li class="nav-item">
-            <%= link_to "Posts",admin_posts_path%>
+            <%= link_to "Posts",admin_posts_path,class:"btn m-2 btn-info"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Log out",destroy_admin_session_path,method: :delete%>
+            <%= link_to "Log out",destroy_admin_session_path,method: :delete,class:"btn m-2 btn-info"%>
           </li>
         <% elsif customer_signed_in?%>
           <li class="nav-item">
-            <%= link_to "Mypage",user_path(id: current_customer.id)%>
+            <%= link_to "Mypage",user_path(id: current_customer.id),class:"btn m-2 btn-info"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Post",posts_path%>
+            <%= link_to "Post",posts_path,class:"btn m-2 btn-info"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Group",groups_path%>
+            <%= link_to "Group",groups_path,class:"btn m-2 btn-info"%>
           </li>
           <li class="nav-item">
-            <%=link_to "Log out",destroy_customer_session_path,method: :delete%>
+            <%=link_to "Log out",destroy_customer_session_path,method: :delete,class:"btn m-2 btn-info"%>
           </li>
         <% else %>
           <li class="nav-item">
-            <%= link_to "Post",posts_path%>
+            <%= link_to "Post",posts_path,class:"btn m-2 btn-info"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign up",new_customer_registration_path%>
+            <%= link_to "Sign up",new_customer_registration_path,class:"btn m-2 btn-info"%>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign in",customer_session_path%>
+            <%= link_to "Sign in",customer_session_path,class:"btn m-2 btn-info"%>
           </li>
         <% end %>
       </ul>
-      <form class="seach">
+      <div class="seach">
        <%= render 'searches/form' %>
-      </form>
+      </div>
     </div>
   </div>
     </nav>
