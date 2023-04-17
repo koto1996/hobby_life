@@ -10,10 +10,10 @@
             <td><%= @customer.name %></td>
           </tr>
           <tr>
-            <td><%= link_to @customer.followings.count,user_followings_path(@customer)%></td>
+            <td>フォロー<%= link_to @customer.followings.count,user_followings_path(@customer)%></td>
           </tr>
           <tr>
-            <td><%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
+            <td>フォロワー<%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
           </tr>
           <% if @customer == current_customer %>
           <tr>

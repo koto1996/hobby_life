@@ -39,12 +39,15 @@
           <li class="nav-item">
             <%= link_to "Sign in",customer_session_path,class:"btn m-2 btn-info"%>
           </li>
+          <li class="nav-item">
+            <%= link_to "Guest",customers_guest_sign_in_path,method: :post,class:"btn m-2 btn-info"%>
+          </li>
         <% end %>
       </ul>
       <div class="seach">
        <%= render 'searches/form' %>
       </div>
-    </div>
+    </div>s
   </div>
     </nav>
   </div>

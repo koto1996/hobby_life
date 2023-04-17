@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'homes#top'
+
   get '/search', to: 'searches#search'
 
  scope module: :customer do
@@ -34,6 +35,10 @@ devise_for :customers,skip: [:passwords],controllers: {
   registrations: "customer/registrations",
   sessions: 'customer/sessions'
 }
+# ゲストログイン
+devise_scope :customer do
+ post '/customers/guest_sign_in', to: 'customer/sessions#new_guest'
+end
 
 # 管理者用
 # URL /admin/sign_in ...
