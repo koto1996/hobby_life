@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>HobbyLife</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,13 +10,12 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="background-color:#ffebe6">
-    <div style="bg-color:#fd7e14">
+  <body style="background-color:#f5deb3">
+    <div class="hedder", style="bg-color:#fd7e14">
       <%= render "layouts/header" %>
     </div>
     <main >
-      <p class="notice", style="background-color:#fd7e14"><%= notice %></p>
-      <p class="alert", style="background-color:#fd7e14"><%= alert %></p>
+      <p class="notice", style="background-color:#f5deb3"><%= notice %></p>
     <%= yield %>
     </main>
   </body>

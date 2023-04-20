@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Customer::SessionsController < Devise::SessionsController
-
+  # customer.rbに記載
   def new_guest
     customer = Customer.guest
     sign_in customer
