@@ -2,25 +2,34 @@
   <div class="row">
     <div class="col-3">
       <h1>User</h1>
-        <table>
-          <tr>
+        <table class="table">
+          <tr colspan="2">
             <td><%= image_tag @customer.get_profile_image(100,100)%></td>
           </tr>
           <tr>
+            <th>name</th>
             <td><%= @customer.name %></td>
           </tr>
           <tr>
-            <td>フォロー<%= link_to @customer.followings.count,user_followings_path(@customer)%></td>
+            <th>follow</th>
+            <td><%= link_to @customer.followings.count,user_followings_path(@customer)%></td>
           </tr>
           <tr>
-            <td>フォロワー<%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
+            <th>follower</th>
+            <td><%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
           </tr>
           <% if @customer == current_customer %>
-          <tr>
-            <td><%= link_to "edit",edit_user_path,class:'btn btn-danger'%></td>
+          <tr colspan="2">
+            <td><%= link_to edit_user_path(@customer.id),class:"btn btn-info btn-block edit_user_#{@customer.id}" do %>
+                <i class="fas fa-user-cog"></i>
+                <% end %>
+            </td>
           </tr>
-          <tr>
-            <td><%= link_to 'Like',user_likes_path,class:'btn btn-danger'%></td>
+          <tr colspan="2">
+            <td><%= link_to user_likes_path,class:'btn btn-danger btn-block user_likes' do %>
+                <i class="fas fa-heart"></i>
+                <% end %>
+            </td>
           </tr>
           <% end %>
           <tr>
