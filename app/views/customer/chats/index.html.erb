@@ -1,25 +1,40 @@
-<h1><%= @group.name %>のchats</h1>
-  <% @customers.each do |customer| %>
-    <%= customer.name %>
-  <% end %>
-
-    <div class="message">
-      <% @chats.each do |chat| %>
-        <%if chat.customer_id == current_customer.id %>
-          <div style="text-align:right;"><%=chat.message%></div>
-        <% else %>
-          <div style="text-align:left;">
-            <%=chat.message%>
-            <%=chat.customer.name%>
-          </div>
+<div class="container">
+  <div class="row">
+    <div class="col-2 text-center mx-auto mt-4">
+      <div class="card">
+        <h4>Member</h4>
+        <table>
+        <% @customers.each do |customer| %>
+          <tr>
+          <td><%= customer.name %></td>
+          </tr>
         <% end %>
+        </table>
+      </div>
+    </div>
+    <div class="col-8 offset-2", style="background-color:#f5ecdc">
+      <h1><%= @group.name %>のchats</h1>
+      <div class="message">
+        <% @chats.each do |chat| %>
+          <%if chat.customer_id == current_customer.id %>
+            <div style="text-align:right;"><%=chat.message%></div>
+          <% else %>
+            <div style="text-align:left;">
+              <p><%=image_tag chat.customer.get_profile_image(50,50),class:"rounded-circle;"%></p>
+              <p><%=chat.customer.name%>
+                 <%=chat.message%>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <div><%=flash[:notice]%></div>
+      <%= form_with model:@chat,url: group_chats_path,method: :post do |f| %>
+        <%= f.text_field :message,autofocus: true,size:"35" %>
+        <%= f.hidden_field :group_id %>
+        <%= f.hidden_field :customer_id %>
+        <%= f.submit "Send" %>
       <% end %>
     </div>
-
-    <div><%=flash[:notice]%></div>
-    <%= form_with model:@chat,url: group_chats_path,method: :post do |f| %>
-      <%= f.text_field :message %>
-      <%= f.hidden_field :group_id %>
-      <%= f.hidden_field :customer_id %>
-      <%= f.submit "Send" %>
-    <% end %>
+  </div>
+</div>
