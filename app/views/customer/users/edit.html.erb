@@ -1,8 +1,11 @@
 <div class="container">
   <div class="row-10 offset-1">
     <div class="card  mx-auto">
-      <h1 class="text-center">UserEdit</h1>
-      <table class="mx-auto">
+      <div class="card-header">
+        <h1 class="text-center">UserEdit</h1>
+      </div>
+      <div class="card-body">
+        <table class="mx-auto">
         <%= form_with model:@customer,url: user_path(@customer),method: :patch do |f| %>
           <%= render "layouts/form_error_messages", model: @customer %>
           <tr>
@@ -11,14 +14,15 @@
           </tr>
           <tr>
             <th>name</th>
-            <td><%= f.text_field :name %></td>
+            <td><%= f.text_field :name,size:"30" %></td>
           </tr>
           <tr>
             <th></th>
-            <td><%= f.submit 'Update',class:'btn btn-danger' %></td>
+            <td class="text-center"><%= f.submit 'Update',class:'btn btn-danger' %></td>
           </tr>
         <% end %>
-      </table>
+        </table>
+      </div>
     </div>
   </div>
 </div>
