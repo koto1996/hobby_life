@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   get '/search', to: 'searches#search'
 
  scope module: :customer do
-    resources :posts,only: [:new,:create,:index,:show,:edit,:update,:destroy] do
+    resources :posts,only: [:new,:create,:index,:show,:edit,:update,:destroy,] do
      resource :favorites,only: [:create,:destroy]
     resources :post_comments,only: [:create,:destroy]
   end
+    get 'ranks' => 'ranks#rank'
     resources :hobbies,only: [:create,:index,:edit,:update]
     resources :users, only: [:index,:show,:edit,:update,] do
      #フォローフォロワー機能

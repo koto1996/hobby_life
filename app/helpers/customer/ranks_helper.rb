@@ -1,0 +1,2 @@
+module Customer::RanksHelper
+end
