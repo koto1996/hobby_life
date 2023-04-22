@@ -8,7 +8,10 @@ Rails.application.routes.draw do
      resource :favorites,only: [:create,:destroy]
     resources :post_comments,only: [:create,:destroy]
   end
+    #いいねのランキング機能 参照:https://qiita.com/nakachan1994/items/9ecf25fe1835415d9ae2
     get 'ranks' => 'ranks#rank'
+    #いいね一覧
+    get 'user/likes' => 'users#like'
     resources :hobbies,only: [:create,:index,:edit,:update]
     resources :users, only: [:index,:show,:edit,:update,] do
      #フォローフォロワー機能
@@ -21,8 +24,7 @@ Rails.application.routes.draw do
      resource :group_users,only: [:create,:destroy]
       resources :chats, only: [:index,:create]
     end
-     #いいね一覧
-     get 'user/likes' => 'users#like'
+    
  end
  namespace :admin do
     resources :posts,only:[:index,:show,:destroy] do
