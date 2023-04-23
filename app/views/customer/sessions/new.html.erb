@@ -4,8 +4,9 @@
       <div class="card-header text-center ">
         <h2>Log in</h2>
       </div>
-      <%= form_with model:@customer,url: customer_session_path do |f| %>
       <div class="card-body">
+      <%= form_with model:@customer,url: customer_session_path do |f| %>
+      <%= render "layouts/form_error_messages", model:@customer %>
         <div class="row p-2">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"mx-3" %>
@@ -17,8 +18,8 @@
         <div class="row offset-4 p-2">
           <%= f.submit "Log in", class:"btn my-1 mx-2 btn-info btn-sm" %>
         </div>
-      </div>
       <% end %>
+      </div>
     </div>
   </div>
 </div>

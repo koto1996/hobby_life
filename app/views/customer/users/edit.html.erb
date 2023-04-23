@@ -5,9 +5,9 @@
         <h1 class="text-center">UserEdit</h1>
       </div>
       <div class="card-body">
-        <table class="mx-auto">
         <%= form_with model:@customer,url: user_path(@customer),method: :patch do |f| %>
-          <%= render "layouts/form_error_messages", model: @customer %>
+        <%= render "layouts/form_error_messages", model:@customer %>
+        <table class="mx-auto">
           <tr>
             <th>image</th>
             <td><%= f.file_field :profile_image,accept:"image/*"%></td>
@@ -20,8 +20,8 @@
             <th></th>
             <td class="text-center"><%= f.submit 'Update',class:'btn btn-danger' %></td>
           </tr>
-        <% end %>
         </table>
+        <% end %>
       </div>
     </div>
   </div>

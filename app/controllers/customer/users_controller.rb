@@ -26,7 +26,7 @@ class Customer::UsersController < ApplicationController
    is_matching_login_customer
    @customer = Customer.find(params[:id])
    if @customer.update(customer_params)
-    redirect_to user_path(@customer)
+    redirect_to user_path(@customer),notice:'ユーザーの編集に成功しました'
    else
     render :edit
    end
