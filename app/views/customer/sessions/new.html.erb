@@ -6,7 +6,7 @@
       </div>
       <div class="card-body">
       <%= form_with model:@customer,url: customer_session_path do |f| %>
-      <%= render "layouts/form_error_messages", model:@customer %>
+      <%= render "customer/shared/error_messages", resource: @customer %>
         <div class="row p-2">
           <%= f.label :email %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"mx-3" %>
