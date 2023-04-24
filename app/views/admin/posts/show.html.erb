@@ -1,25 +1,42 @@
-<h2>admin-Show-</h2>
-  <table>
-    <tr>
-      <th>image</th>
-      <td><%= image_tag@post.get_image(100,100)%></td>
-    </tr>
-    <tr>
-      <th>title</th>
-      <td><%= @post.title%></td>
-    </tr>
-    <tr>
-      <th>body</th>
-      <td><%= @post.body%></td>
-    </tr>
-    <tr>
-      <th></th>
-      <td><%= link_to "Destroy",admin_post_path(@post),method: :delete %></td>
-    </tr>
-  </table>
-  <div>
-    <p>コメント数:<%= @post.post_comments.count %></p>
-    <% @post.post_comments.each do |comment| %>
-      <p><%= comment.comment %></p>
-      <P><%= link_to "Destroy",admin_post_post_comment_path(@post,comment),method: :delete %></p>
-    <% end %>
+<div class="container">
+  <div class="row-10 offset-1">
+    <h2>admin-Show-</h2>
+    <div class="col">
+      <div class="card-list-container">
+        <div class="card w-50 mx-auto mt-4 shadow-lg">
+          <%= image_tag@post.get_image(100,100), class:"card-img-top;"%>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-3">
+                <%= image_tag @post.customer.get_profile_image(50,50),class:"mt-3 rounded-circle;"%>
+                <%= @post.customer.name %>
+              </div>
+              <div class="col-8">
+                <p class="card-title">
+                  <i class="fas fa-pen"></i><%= @post.title%>
+                </p>
+                <p class="card-text"><%= @post.body %></p>
+                <%= link_to "Destroy",admin_post_path(@post),method: :delete,class:"btn btn-secondary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="w-50 mx-auto mt-4">
+        <table class="table">
+        <% @post.post_comments.each do |comment| %>
+          <tr>
+            <td><%=image_tag comment.customer.get_profile_image(100,100)%></td>
+            <td><%= comment.customer.name %></td>
+            <td><%=comment.comment%></td>
+            <td><%= link_to "Destroy",admin_post_post_comment_path(comment),method: :delete,class:"btn btn-secondary" %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
