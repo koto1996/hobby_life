@@ -31,7 +31,7 @@
             <td><%=image_tag comment.customer.get_profile_image(100,100)%></td>
             <td><%= comment.customer.name %></td>
             <td><%=comment.comment%></td>
-            <td><%= link_to "Destroy",admin_post_post_comment_path(comment),method: :delete,class:"btn btn-secondary" %></td>
+            <td><%= link_to "Destroy",admin_post_post_comment_path(comment.post,comment),method: :delete,class:"btn btn-secondary" %></td>
           </tr>
         <% end %>
         </table>

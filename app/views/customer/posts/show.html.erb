@@ -25,6 +25,11 @@
                 <%= render 'customer/favorites/favorite',post: @post %>
                 <i class="fas fa-comment"></i>コメント数:<%= @post.post_comments.count %>
               </p>
+              <p>
+                <% if @post.customer == current_customer %>
+                  <%= link_to '削除',post_path(@post),method: :delete,'data-confirm'=>"本当に削除しますか？" %>
+                <% end %>
+              </p>
             </div>
           </div>
         </div>

@@ -11,7 +11,7 @@ class Customer::GroupsController < ApplicationController
     if @group.save
      redirect_to groups_path,notice:'グループを作成しました。'
     else
-     render :new
+     redirect_to new_group_path,notice:'グループの作成に失敗しました'
     end
   end
 
