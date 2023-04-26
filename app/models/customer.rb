@@ -42,7 +42,7 @@ class Customer < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  validates :name,presence: true, length: {in: 2..10}#2文字から10文字以内であるか
+  validates :name,presence: true, length: {in: 2..20}#2文字から20文字以内であるか
   validates :email,presence: true, uniqueness: true#重複していないか
   validates :birthday,presence: true
 
