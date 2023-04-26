@@ -18,5 +18,16 @@ customers = Customer.create!(
 
     ]
   )
-  
-  
+
+Hobby.create!(
+  [
+    {name: '温泉', customer_id: customers[0].id},
+    {name: 'サウナ', customer_id: customers[1].id}
+    ]
+  )
+
+Post.create!(
+  [
+    {title: '温泉旅行', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image1-onsen.jpg"), filename:"image1-onsen.jpg"), body: '「第一弾」家族で温泉旅行！！サウナなかったけど温泉最高〜！！', :hobby_id =>'1', customer_id: customers[0].id}
+    ]
+  )

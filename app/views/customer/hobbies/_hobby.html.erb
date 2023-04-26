@@ -1,10 +1,12 @@
 <div class="card text-center my-5">
-  
+
   <table>
     <% hobbies.each do |hobby| %>
     <tr>
     <td><%= hobby.name %></td>
+    <% if hobby.customer_id == current_customer.id %>
     <td><%= link_to "edit",edit_hobby_path(hobby),class:'btn btn-danger btn-sm'%></td>
+    <% end %>
     </tr>
     <% end %>
   </table>

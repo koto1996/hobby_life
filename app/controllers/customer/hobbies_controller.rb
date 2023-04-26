@@ -1,5 +1,6 @@
 class Customer::HobbiesController < ApplicationController
  before_action :authenticate_customer!
+ before_action :is_matching_login_customer,only:[:edit,:update]
  def index
    @hobby = Hobby.new
    @hobbies = current_customer.hobbies
@@ -34,6 +35,13 @@ class Customer::HobbiesController < ApplicationController
 
  def hobby_params
    params.require(:hobby).permit(:name,:customer_id)
+ end
+
+ def is_matching_login_customer
+  customer = Customer.find(params[:id])
+  unless customer.id == current_customer.id
+   redirect_to user_path(customer)
+  end
  end
 
 end
