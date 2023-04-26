@@ -15,57 +15,62 @@
             <td><%= link_to @customer.followers.count,user_followers_path(@customer)%></td>
           </tr>
           <% if @customer == current_customer %>
-          <tr colspan="2">
-            <td><%= link_to edit_user_path(@customer.id),class:"btn btn-info btn-block edit_user_#{@customer.id}" do %>
-                <i class="fas fa-user-cog"></i>
-                <% end %>
-            </td>
-          </tr>
-          <tr colspan="2">
-            <td><%= link_to user_likes_path,class:'btn btn-danger btn-block user_likes' do %>
-                <i class="fas fa-heart"></i>
-                <% end %>
-            </td>
-          </tr>
+            <tr colspan="2">
+              <td><%= link_to edit_user_path(@customer.id),class:"btn btn-info btn-block edit_user_#{@customer.id}" do %>
+                    <i class="fas fa-user-cog"></i>
+                  <% end %>
+              </td>
+            </tr>
+            <tr colspan="2">
+              <td><%= link_to user_likes_path,class:'btn btn-danger btn-block user_likes' do %>
+                    <i class="fas fa-heart"></i>
+                  <% end %>
+              </td>
+            </tr>
           <% end %>
           <tr>
             <td><%= render 'customer/relationships/follobtn',customer:@customer %></td>
           </tr>
         </table>
       <h2>Hobby一覧</h2>
-        <%= render 'customer/hobbies/hobby',hobbies: @hobbies %>
-      </div>
-    <div class="col-7 mx-auto">
-      <div><%=link_to "New Post",new_post_path,class:'m-3'%>|<%=link_to "New Hobby",hobbies_path,class:'m-3'%>|<%=link_to "New Group",new_group_path,class:'m-3'%></div>
-      <div class="table-responsive">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>image</th>
-            <th>title</th>
-            <th colspan='3'></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @posts.each do |pos| %>
-          <tr>
-            <td><%=image_tag pos.get_image(100,100)%></td>
-            <td><%= link_to post_path(pos) do %>
-                <%=pos.title%>
-                <% end %>
-            </td>
-            <% if pos.customer_id == current_customer %>
-            <td><%=link_to "destroy",post_path(pos),method: :delete%></td>
-            <% end %>
-            <td><%=pos.post_comments.count%>コメント</td>
-            <td id="favorite_buttons_<%= pos.id%>">
-              <%= render "customer/favorites/favorite",post: pos %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render 'customer/hobbies/hobby',hobbies: @hobbies %>
     </div>
+    <div class="col-7 mx-auto">
+      <div class="m-3">
+        <%=link_to "New Post",new_post_path,class:'m-3'%>|
+        <%=link_to "New Hobby",hobbies_path,class:'m-3'%>|
+        <%=link_to "New Group",new_group_path,class:'m-3'%>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>image</th>
+              <th>title</th>
+              <th colspan='3'></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |pos| %>
+              <tr>
+                <td><%=image_tag pos.get_image(100,100)%></td>
+                <td>
+                  <%= link_to post_path(pos) do %>
+                    <%=pos.title%>
+                  <% end %>
+                </td>
+                <% if pos.customer_id == current_customer %>
+                  <td><%=link_to "destroy",post_path(pos),method: :delete%></td>
+                <% end %>
+                  <td><%=pos.post_comments.count%>コメント</td>
+                  <td id="favorite_buttons_<%= pos.id%>">
+                    <%= render "customer/favorites/favorite",post: pos %>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

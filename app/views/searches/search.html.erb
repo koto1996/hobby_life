@@ -4,13 +4,13 @@
     <div class="col m-4">
       <% if @model == 'customer'%>
         <h4><%= @content %></h4>
-          <%= render 'customer/users/index',customers:@records %>
+        <%= render 'customer/users/index',customers:@records %>
       <% elsif @model == 'post'%>
         <h4><%= @content %></h4>
-          <%= render 'customer/posts/index',posts:@records %>
+        <%= render 'customer/posts/index',posts:@records %>
       <% else %>
         <h4><%= @content %></h4>
-          <%= render 'customer/hobbies/hobby',hobbies:@records %>
+        <%= render 'customer/hobbies/hobby',hobbies:@records %>
       <% end %>
     </div>
   </div>

@@ -2,45 +2,45 @@ class Customer::UsersController < ApplicationController
   before_action :authenticate_customer!
   before_action :is_matching_login_customer,only:[:edit,:update]
   def show
-   @customer = Customer.find(params[:id])
-   @posts = @customer.posts.order(created_at: :desc)
-   @hobbies = current_customer.hobbies
+    @customer = Customer.find(params[:id])
+    @posts = @customer.posts.order(created_at: :desc)
+    @hobbies = current_customer.hobbies
   end
 
   def index
-   @customers = Customer.all
+    @customers = Customer.all
   end
 
   def like
-   @customer = current_customer
-   @favorite_posts = @customer.favorite_posts
+    @customer = current_customer
+    @favorite_posts = @customer.favorite_posts
   end
 
-
   def edit
-   is_matching_login_customer
-   @customer = Customer.find(params[:id])
+    is_matching_login_customer
+    @customer = Customer.find(params[:id])
   end
 
   def update
-   is_matching_login_customer
-   @customer = Customer.find(params[:id])
-   if @customer.update(customer_params)
-    redirect_to user_path(@customer),notice:'ユーザーの編集に成功しました'
-   else
-    render :edit
-   end
+    is_matching_login_customer
+    @customer = Customer.find(params[:id])
+    if @customer.update(customer_params)
+      redirect_to user_path(@customer),notice:'ユーザーの編集に成功しました'
+    else
+      render :edit
+    end
   end
 
   private
+
   def customer_params
-   params.require(:customer).permit(:name,:profile_image)
+    params.require(:customer).permit(:name,:profile_image)
   end
 
   def is_matching_login_customer
-   customer = Customer.find(params[:id])
-   unless customer.id == current_customer.id
-    redirect_to user_path(customer)
-   end
+    customer = Customer.find(params[:id])
+    unless customer.id == current_customer.id
+      redirect_to user_path(customer)
+    end
   end
 end

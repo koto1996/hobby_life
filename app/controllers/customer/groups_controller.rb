@@ -9,9 +9,9 @@ class Customer::GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.owner_id = current_customer.id
     if @group.save
-     redirect_to groups_path,notice:'グループを作成しました。'
+      redirect_to groups_path,notice:'グループを作成しました。'
     else
-     redirect_to new_group_path,notice:'グループの作成に失敗しました'
+      redirect_to new_group_path,notice:'グループの作成に失敗しました'
     end
   end
 

@@ -6,21 +6,21 @@
       </div>
       <div class="card-body">
         <%= form_with model:@customer,url: user_path(@customer),method: :patch do |f| %>
-        <%= render "layouts/form_error_messages", model:@customer %>
-        <table class="mx-auto">
-          <tr>
-            <th>image</th>
-            <td><%= f.file_field :profile_image,accept:"image/*"%></td>
-          </tr>
-          <tr>
-            <th>name</th>
-            <td><%= f.text_field :name,size:"30" %></td>
-          </tr>
-          <tr>
-            <th></th>
-            <td class="text-center"><%= f.submit 'Update',class:'btn btn-danger' %></td>
-          </tr>
-        </table>
+          <%= render "layouts/form_error_messages", model:@customer %>
+          <table class="mx-auto">
+            <tr>
+              <th>image</th>
+              <td><%= f.file_field :profile_image,accept:"image/*"%></td>
+            </tr>
+            <tr>
+              <th>name</th>
+              <td><%= f.text_field :name,size:"30" %></td>
+            </tr>
+            <tr>
+              <th></th>
+              <td class="text-center"><%= f.submit 'Update',class:'btn btn-danger' %></td>
+            </tr>
+          </table>
         <% end %>
       </div>
     </div>

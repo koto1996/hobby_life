@@ -14,16 +14,17 @@
         <% @groups.each do |group| %>
         <tr>
           <td><%=image_tag group.get_image,size:'100x100' %></td>
-          <td><%= link_to group_path(group.id) do %>
+          <td>
+            <%= link_to group_path(group.id) do %>
               <%= group.name %>
-              <% end %>
+            <% end %>
           </td>
           <td><%= group.group_users.count %></td>
           <td>
-              <% if group.is_owned_by?(current_customer) %>
-                <%= link_to 'Edit',edit_group_path(group) %>
-                <%= link_to 'Delete',group_path(group),method: :delete,'data-confirm'=>"本当に削除しますか？" %>
-              <% end %>
+            <% if group.is_owned_by?(current_customer) %>
+              <%= link_to 'Edit',edit_group_path(group) %>
+              <%= link_to 'Delete',group_path(group),method: :delete,'data-confirm'=>"本当に削除しますか？" %>
+            <% end %>
           </td>
         </tr>
         <% end %>

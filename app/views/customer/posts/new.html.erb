@@ -1,29 +1,29 @@
 <div class="container">
   <div class="row-6 offset-1">
     <h2>NewPost</h2>
-      <%= render "layouts/form_error_messages", model: @post %>
-      <%= form_with model:@post,url: posts_path,method: :post do |f| %>
-        <table class="table table-borderless mb-3">
-          <tr>
-            <th><%= f.label "image"%></th>
-            <td><%=f.file_field :image,accept:"image/*"%></td>
-          </tr>
-          <tr>
-            <th><%= f.label "title"%></th>
-            <td><%=f.text_field :title,placeholder:"タイトルを入力してください",size:"45"%></td>
-          </tr>
-          <tr>
-            <th><%= f.label "body"%></th>
-            <td><%=f.text_area :body,rows:'5',placeholder:"本文を入力してください",size:"45x5"%></td>
-          </tr>
-          <tr>
-            <th><%= f.label "hobby"%></th>
-            <td><%=f.collection_select :hobby_id,current_customer.hobbies.all, :id, :name,{ include_blank: '選択してください'}%></td>
-          </tr>
-            <th></th>
-            <td><%= f.submit "NEWPOST",class:"btn btn-danger"%></td>
-        </table>
-      <% end %>
-    </div>
+    <%= render "layouts/form_error_messages", model: @post %>
+    <%= form_with model:@post,url: posts_path,method: :post do |f| %>
+      <table class="table table-borderless mb-3">
+        <tr>
+          <th><%= f.label "image"%></th>
+          <td><%=f.file_field :image,accept:"image/*"%></td>
+        </tr>
+        <tr>
+          <th><%= f.label "title"%></th>
+          <td><%=f.text_field :title,placeholder:"タイトルを入力してください",size:"45"%></td>
+        </tr>
+        <tr>
+          <th><%= f.label "body"%></th>
+          <td><%=f.text_area :body,rows:'5',placeholder:"本文を入力してください",size:"45x5"%></td>
+        </tr>
+        <tr>
+          <th><%= f.label "hobby"%></th>
+          <td><%=f.collection_select :hobby_id,current_customer.hobbies.all, :id, :name,{ include_blank: '選択してください'}%></td>
+        </tr>
+          <th></th>
+          <td><%= f.submit "NEWPOST",class:"btn btn-danger"%></td>
+      </table>
+    <% end %>
+  </div>
 </div>
 

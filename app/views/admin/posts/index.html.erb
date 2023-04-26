@@ -13,20 +13,14 @@
         <tbody>
           <% @posts.each do |pos| %>
           <tr>
-            <td>
-              <%=image_tag pos.get_image(100,100) %>
-            </td>
-            <td>
-              <%= pos.customer.name %>
-            </td>
+            <td><%=image_tag pos.get_image(100,100) %></td>
+            <td><%= pos.customer.name %></td>
             <td>
               <%=link_to admin_post_path(pos.id) do %>
-              <%=pos.title%>
+                <%=pos.title%>
               <% end %>
             </td>
-            <td>
-              <p>コメント数:<%= pos.post_comments.count %></p>
-            </td>
+            <td><p>コメント数:<%= pos.post_comments.count %></p></td>
           </tr>
           <% end %>
         </tbody>

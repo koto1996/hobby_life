@@ -21,7 +21,7 @@
               </p>
               <p>
                 <%= link_to user_path(@post.customer_id) do %>
-                <i class="fas fa-user"></i><%= @post.customer.name%>
+                  <i class="fas fa-user"></i><%= @post.customer.name%>
                 <% end %>
               </p>
               <p>
@@ -47,9 +47,9 @@
             <td><%= image_tag comment.customer.get_profile_image(50,50)%></td>
             <td><i class="fas fa-user"></i><%= comment.customer.name %></td>
             <td><%= comment.comment %></td>
-            <% if comment.customer == current_customer %>
+          <% if comment.customer == current_customer %>
             <td><%= link_to '削除',post_post_comment_path(comment.post,comment),method: :delete %></td>
-            <% end %>
+          <% end %>
           </tr>
         <% end %>
         </table>

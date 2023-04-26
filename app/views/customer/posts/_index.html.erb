@@ -11,23 +11,21 @@
     <tbody>
       <% posts.each do |pos| %>
       <tr>
-        <td>
-          <%=image_tag pos.get_image(100,100) %>
-        </td>
+        <td><%=image_tag pos.get_image(100,100) %></td>
         <td>
           <%=link_to user_path(pos.customer_id) do %>
-          <%= pos.customer.name %>
+            <%= pos.customer.name %>
           <% end %>
         </td>
         <td>
           <%=link_to post_path(pos.id) do %>
-          <%=pos.title%>
+            <%=pos.title%>
           <% end %>
         </td>
         <% if customer_signed_in?%>
-        <td id="favorite_buttons_<%= pos.id%>">
-          <%= render "customer/favorites/favorite",post: pos %>
-        </td>
+          <td id="favorite_buttons_<%= pos.id%>">
+            <%= render "customer/favorites/favorite",post: pos %>
+          </td>
         <% end %>
       </tr>
       <% end %>

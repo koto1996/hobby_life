@@ -1,15 +1,15 @@
 <div class="container">
- <div class="row-10 offset-1">
-  <div class="col-6 text-center mx-auto">
-   <h2>Hobby</h2>
-   <%=form_with model: @hobby,url:hobbies_path,method: :post do |f| %>
-   <table>
-    <tr><%= f.text_field :name%></tr>
-    <tr><%= f.submit"登録"%></tr>
-   </table>
-   <% end %>
-   <h2>Hobby一覧</h2>
-   <%= render 'hobby',hobbies:@hobbies %>
+  <div class="row-10 offset-1">
+    <div class="col-6 text-center mx-auto">
+      <h2>Hobby</h2>
+      <%=form_with model: @hobby,url:hobbies_path,method: :post do |f| %>
+        <table>
+          <tr><%= f.text_field :name%></tr>
+          <tr><%= f.submit"登録"%></tr>
+        </table>
+      <% end %>
+      <h2>Hobby一覧</h2>
+      <%= render 'hobby',hobbies:@hobbies %>
+    </div>
   </div>
- </div>
 </div>

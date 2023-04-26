@@ -19,22 +19,22 @@
               <% last_like = rank.favorites.count %>
             <% end %>
             <% if rank.favorites.count != last_like %>
-            <% j = i %>
-            <tr>
-              <td>第<%= j %>位</td>
-              <td>♥<%= rank.favorites.count %>いいね</td>
-              <td><%=image_tag rank.get_image(100,100) %></td>
-              <td><%= rank.title %></td>
-              <% last_like = rank.favorites.count %>
-            </tr>
+              <% j = i %>
+              <tr>
+                <td>第<%= j %>位</td>
+                <td>♥<%= rank.favorites.count %>いいね</td>
+                <td><%=image_tag rank.get_image(100,100) %></td>
+                <td><%= rank.title %></td>
+                <% last_like = rank.favorites.count %>
+              </tr>
             <% else %>
-            <tr>
-              <% last_like = rank.favorites.count %>
-              <td>第<%= j %>位</td>
-              <td>♥<%= rank.favorites.count %>いいね</td>
-              <td><%=image_tag rank.get_image(100,100) %></td>
-              <td><%= rank.title %></td>
-            </tr>
+              <tr>
+                <% last_like = rank.favorites.count %>
+                <td>第<%= j %>位</td>
+                <td>♥<%= rank.favorites.count %>いいね</td>
+                <td><%=image_tag rank.get_image(100,100) %></td>
+                <td><%= rank.title %></td>
+              </tr>
             <% end %>
           <% end %>
         </tbody>
