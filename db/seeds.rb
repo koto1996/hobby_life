@@ -22,12 +22,20 @@ customers = Customer.create!(
 Hobby.create!(
   [
     {name: '温泉', customer_id: customers[0].id},
-    {name: 'サウナ', customer_id: customers[1].id}
+    {name: 'サウナ', customer_id: customers[0].id},
+    {name: 'スプラ', customer_id: customers[1].id},
+    {name: '黒烏龍茶', customer_id: customers[1].id},
+    {name: 'コーヒー', customer_id: customers[2].id},
+    {name: 'アストンマーティン', customer_id: customers[2].id},
+    {name: 'お酒', customer_id: customers[3].id},
+    {name: 'コナン', customer_id: customers[4].id},
+    {name: '歌', customer_id: customers[5].id}
     ]
   )
 
 Post.create!(
   [
-    {title: '温泉旅行', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image1-onsen.jpg"), filename:"image1-onsen.jpg"), body: '「第一弾」家族で温泉旅行！！サウナなかったけど温泉最高〜！！', :hobby_id =>'1', customer_id: customers[0].id}
+    {title: '温泉旅行', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image1-onsen.jpg"), filename:"image1-onsen.jpg"), body: '「第一弾」家族で温泉旅行！！サウナなかったけど温泉最高〜！！', :hobby_id =>'1', customer_id: customers[0].id},
+    {title: '大会に向けて', image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/image2-penki.jpg"), filename:"image2-penki.jpg"), body: '大会まであと少しもう特訓の日々を送っています！！配信見てね〜', :hobby_id =>'3', customer_id: customers[1].id},
     ]
   )
