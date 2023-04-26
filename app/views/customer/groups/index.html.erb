@@ -1,34 +1,45 @@
 <div class="container">
   <div class="row-10 offset-1">
-    <h1>NewGroups</h1>
-    <table class="table">
-      <thead class="table m-4">
-        <tr>
-          <th>image</th>
-          <th>group[name]</th>
-          <th>group[member]</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @groups.each do |group| %>
-        <tr>
-          <td><%=image_tag group.get_image,size:'100x100' %></td>
-          <td>
-            <%= link_to group_path(group.id) do %>
-              <%= group.name %>
-            <% end %>
-          </td>
-          <td><%= group.group_users.count %></td>
-          <td>
-            <% if group.is_owned_by?(current_customer) %>
-              <%= link_to 'Edit',edit_group_path(group) %>
-              <%= link_to 'Delete',group_path(group),method: :delete,'data-confirm'=>"本当に削除しますか？" %>
-            <% end %>
-          </td>
-        </tr>
+    <div class="row">
+      <div class="col-10">
+        <h2>Groups</h2>
+      </div>
+      <div class="col-1 ml-4 mt-2">
+        <%= link_to new_group_path do %>
+          <i class="fas fa-plus-square fa-2x" style="color: #f5cc00;"></i>
         <% end %>
-      </tbody>
-    </table>
+      </div>
+    </div>
+    <div class="row mt-3">
+      <table class="table">
+        <thead class="table m-4">
+          <tr>
+            <th>image</th>
+            <th>group[name]</th>
+            <th>group[member]</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @groups.each do |group| %>
+          <tr>
+            <td><%=image_tag group.get_image,size:'100x100' %></td>
+            <td>
+              <%= link_to group_path(group.id) do %>
+                <%= group.name %>
+              <% end %>
+            </td>
+            <td><%= group.group_users.count %></td>
+            <td>
+              <% if group.is_owned_by?(current_customer) %>
+                <%= link_to 'Edit',edit_group_path(group) %>
+                <%= link_to 'Delete',group_path(group),method: :delete,'data-confirm'=>"本当に削除しますか？" %>
+              <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
