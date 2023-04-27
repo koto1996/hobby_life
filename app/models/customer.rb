@@ -45,7 +45,10 @@ class Customer < ApplicationRecord
   validates :name,presence: true, length: {in: 2..20}#2文字から20文字以内であるか
   validates :email,presence: true, uniqueness: true#重複していないか
   validates :birthday,presence: true
-
+  # 退会機能実施 参照:https://qiita.com/tt_tsutsumi/items/588d0e65a289a15530d2
+  # def active_for_authentication?
+  #   super && (self.is_active == false)
+  # end
   # relationshipコントローラにて使用
   def follow(user)
     relationships.create(follower_id: user.id)

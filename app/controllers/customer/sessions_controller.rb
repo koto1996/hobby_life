@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Customer::SessionsController < Devise::SessionsController
+  # before_action :customer_state, only:[:create]
   # customer.rbに記載
   def new_guest
     customer = Customer.guest
@@ -24,6 +25,18 @@ class Customer::SessionsController < Devise::SessionsController
   # end
 
   # protected
+  # 退会しているか判断するメソッド
+  # def customer_state
+  #   # emailが一致しているアカウントを取得する
+  #   @customer = Customer.find_by(email: params[:customer][:email])
+  # return if !@customer
+  #   if @customer.valid_password?(params[:customer][:password])
+  #     @customer.active_for_authentication == false
+  #   else
+  #     @customer.is_withdraw
+  #   end
+  # end
+
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

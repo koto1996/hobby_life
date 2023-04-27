@@ -34,7 +34,7 @@ class Customer::UsersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:name,:profile_image)
+    params.require(:customer).permit(:name,:profile_image,:is_withdraw)
   end
 
   def is_matching_login_customer
