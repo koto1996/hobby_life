@@ -53,14 +53,14 @@
           </tr>
         <% end %>
         </table>
-        <table>
         <%= form_with model:[@post,@post_comment] do |f| %>
+        <table>
           <tr>
             <td><%= f.text_area :comment,placeholder:'コメントをここに入力してください',size:"35",class:"ml-4"%></td>
             <td><%= f.submit 'Send',class:'btn btn-danger' %></td>
           </tr>
-        <% end %>
         </table>
+        <% end %>
       </div>
     </div>
   </div>
