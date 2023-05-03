@@ -35,7 +35,6 @@ module Vision
       response_body = JSON.parse(response.body)
       # APIレスポンス出力
       response_body["responses"][0]["safeSearchAnnotation"]
-      end
     end
   end
 end
