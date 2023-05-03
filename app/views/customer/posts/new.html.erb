@@ -2,7 +2,7 @@
   <div class="row-6 offset-1">
     <h2>NewPost</h2>
     <%= render "layouts/form_error_messages", model: @post %>
-    <%= form_with model:@post,url: posts_path(@post),method: :post do |f| %>
+    <%= form_with model:@post,url: posts_path,method: :post do |f| %>
       <table class="table table-borderless mb-3">
         <tr>
           <th><%= f.label "image"%></th>
