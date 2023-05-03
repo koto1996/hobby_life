@@ -7,11 +7,14 @@ class Customer::PostsController < ApplicationController
   def create
     @post=Post.new(post_params)
     @post.customer_id=current_customer.id
-   if
     @post.save
-    redirect_to posts_path,notice:"投稿に成功しました。"
-   else
+    data = Vision.get_image_data(@post.image)
+   if data.value?("LIKELY") || data.value?("VERY_LIKELY")
+    @post.image.purge
+    @post.destroy
     redirect_to request.referer,notice:"投稿に失敗しました"
+   else
+    redirect_to post_path(@post.id),notice:"投稿に成功しました。"
    end
   end
 

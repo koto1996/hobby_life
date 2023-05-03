@@ -29,10 +29,10 @@ class Customer::SessionsController < Devise::SessionsController
   def customer_state
     # emailが一致しているアカウントを取得する
     @customer = Customer.find_by(email: params[:customer][:email])
-  return if !@customer
-    if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
-      [:notice] => '退会済みのアカウントです'
-    end
+    return if !@customer
+      if (@customer.valid_password?(params[:customer][:password]) && (@customer.active_for_authentication? == false))
+        [:notice] => '退会済みのアカウントです。'
+      end
   end
 
 
