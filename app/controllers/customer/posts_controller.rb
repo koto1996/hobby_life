@@ -12,9 +12,9 @@ class Customer::PostsController < ApplicationController
    if data.value?("LIKELY") || data.value?("VERY_LIKELY")
     @post.image.purge
     @post.destroy
-    redirect_to request.referer,notice:"投稿に失敗しました"
+    redirect_to new_post_path,notice:"投稿に失敗しました"
    else
-    redirect_to post_path(@post.id),notice:"投稿に成功しました。"
+    redirect_to post_path(@post),notice:"投稿に成功しました。"
    end
   end
 
