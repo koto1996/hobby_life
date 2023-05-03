@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row-10 offset-1">
+    <h2>admin-posts-</h2>
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="table m-4">
+          <tr>
+            <th>image</th>
+            <th>user</th>
+            <th>title</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @posts.each do |pos| %>
+          <tr>
+            <td>
+              <%=image_tag pos.get_image(100,100) %>
+            </td>
+            <td>
+              <%= pos.customer.name %>
+            </td>
+            <td>
+              <%=link_to admin_post_path(pos.id) do %>
+              <%=pos.title%>
+              <% end %>
+            </td>
+            <td>
+              <p>コメント数:<%= pos.post_comments.count %></p>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
