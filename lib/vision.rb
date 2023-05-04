@@ -34,7 +34,11 @@ module Vision
       response = https.request(request, params)
       response_body = JSON.parse(response.body)
       # APIレスポンス出力
-      response_body["responses"][0]["safeSearchAnnotation"]
+      if (error = response_body['responses'][0]['error']).present?
+        raise error['message']
+      else
+        response_body["responses"][0]["safeSearchAnnotation"]
+      end
     end
   end
 end

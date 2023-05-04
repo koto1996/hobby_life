@@ -6,6 +6,7 @@ class Customer::PostsController < ApplicationController
 
   def create
     post=Post.new(post_params)
+    post.set_default_image unless post.image.attached?
     post.customer_id=current_customer.id
     post.save
     data = Vision.get_image_data(post.image)
