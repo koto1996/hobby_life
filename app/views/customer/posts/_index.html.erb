@@ -23,8 +23,8 @@
           <% end %>
         </td>
         <% if customer_signed_in?%>
-          <td id="favorite_buttons_<%= pos.id%>">
-            <%= render "customer/favorites/favorite",post: pos %>
+          <td class="favorite" id="post_<%=pos.id%>">
+            <%= render partial: "customer/favorites/favorite",locals: {post: pos} %>
           </td>
         <% end %>
       </tr>
