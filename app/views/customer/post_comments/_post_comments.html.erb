@@ -1,0 +1,10 @@
+<% @post.post_comments.each do |comment| %>
+  <tr class="post_comments">
+    <td><%= image_tag comment.customer.get_profile_image(50,50)%></td>
+    <td><i class="fas fa-user"></i><%= comment.customer.name %></td>
+    <td><%= comment.comment %></td>
+  <% if comment.customer == current_customer %>
+    <td><%= link_to '削除',post_post_comment_path(comment.post,comment),method: :delete %></td>
+  <% end %>
+  </tr>
+<% end %>

@@ -27,12 +27,12 @@
               <p class="favorite" id="post_<%= @post.id%>">
                 <%= render partial: 'customer/favorites/favorite',locals: {post: @post} %>
               </p>
-              <p>
+              <p class="comments_count" id="post_<%= @post.id%>">
                 <i class="fas fa-comment"></i>コメント数:<%= @post.post_comments.count %>
               </p>
               <p>
                 <% if @post.customer == current_customer %>
-                  <%= link_to '削除',post_path(@post),method: :delete,'data-confirm'=>"本当に削除しますか？" %>
+                  <%= link_to '削除',post_path(@post),method: :delete,remote: true, 'data-confirm'=>"本当に削除しますか？" %>
                 <% end %>
               </p>
             </div>
@@ -43,17 +43,8 @@
     </div>
     <div class="col">
       <div class="w-50 mx-auto mt-4">
-        <table class="table">
-        <% @post.post_comments.each do |comment| %>
-          <tr>
-            <td><%= image_tag comment.customer.get_profile_image(50,50)%></td>
-            <td><i class="fas fa-user"></i><%= comment.customer.name %></td>
-            <td><%= comment.comment %></td>
-          <% if comment.customer == current_customer %>
-            <td><%= link_to '削除',post_post_comment_path(comment.post,comment),method: :delete %></td>
-          <% end %>
-          </tr>
-        <% end %>
+        <table class="table" id="post_<%= @post.id%>">
+          <%= render partial: 'customer/post_comments/post_comments',locals: {post: @post} %>
         </table>
         <%= form_with model:[@post,@post_comment] do |f| %>
         <table>

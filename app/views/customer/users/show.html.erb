@@ -62,7 +62,7 @@
                 <% if pos.customer_id == current_customer %>
                   <td><%=link_to "destroy",post_path(pos),method: :delete%></td>
                 <% end %>
-                  <td><%=pos.post_comments.count%>コメント</td>
+                  <td class="comments_count"><%=pos.post_comments.count%>コメント</td>
                   <td id="favorite_buttons_<%= pos.id%>">
                     <%= render "customer/favorites/favorite",post: pos %>
                   </td>
